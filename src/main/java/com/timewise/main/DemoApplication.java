@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.timewise.main.Domain.Customer;
 import com.timewise.main.Repository.CustomerRepository;
 
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -51,5 +52,13 @@ public class DemoApplication {
 			});
 			log.info("");
 		});
+	}
+
+	@Bean
+	ApplicationRunner applicationRunner(CustomerRepository customerRepository) {
+		return args -> {
+			customerRepository.save(new Customer("Chris", "Wood"));
+			customerRepository.findAll();
+		};
 	}
 }
