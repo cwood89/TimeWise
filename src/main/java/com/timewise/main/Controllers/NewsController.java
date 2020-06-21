@@ -12,7 +12,7 @@ public class NewsController {
   private CustomerRepository repo;
 
   @GetMapping("/news")
-  Iterable<Customer> newsHello() {
+  public Iterable<Customer> newsHello() {
     Iterable<Customer> customer = repo.findAll();
     return customer;
   }
